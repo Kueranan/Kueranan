@@ -22,13 +22,13 @@ Official documentation: [Managing your profile README](https://docs.github.com/e
 - A collapsed plain-text profile and descriptive image alternatives keep the content available without loading the artwork.
 - The name and identity remain visible throughout the loop.
 - Every GIF has a matching PNG. Replace `.gif` with `.png` in the README image paths to disable motion.
-- All artwork uses Georgia, with Georgia Bold for headings and skill labels. Contact badges are rendered as PNGs to preserve the font on devices without Georgia. SVG alternatives remain available locally.
+- All artwork uses Roboto, with Roboto Bold for headings and skill labels. Contact badges are rendered as PNGs to preserve the font on every device. SVG alternatives remain available locally.
 - GitHub controls the surrounding page theme. Images retain their black background in light and dark modes; README text uses the visitor's GitHub theme.
 - Work, education, and skills are based on the supplied resume, with Codex, Excel, and Power BI added at the owner's request. Project repository links were not supplied, so none were invented. A phone number and a copy of the resume PDF are not included.
 
 ## Regenerate the artwork
 
-Python 3, Pillow, CairoSVG, the system Cairo library, and locally installed Georgia regular/bold fonts are required. The generator checks macOS, Linux, and Windows font locations. For another font installation, set `PROFILE_BODY_FONT` and `PROFILE_TITLE_FONT` to font file paths. Font files are not distributed with this repository.
+Python 3, Pillow, CairoSVG, and the system Cairo library are required. Roboto regular/bold fonts are bundled in `assets/fonts/` with their SIL Open Font License and source notes. To use another font, set `PROFILE_BODY_FONT` and `PROFILE_TITLE_FONT` to font file paths.
 
 ```sh
 python3 -m venv .venv

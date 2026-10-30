@@ -22,16 +22,10 @@ def font_path(env, candidates):
 
 
 REGULAR = font_path("PROFILE_BODY_FONT", [
-    "/System/Library/Fonts/Supplemental/Georgia.ttf",
-    "/usr/share/fonts/truetype/msttcorefonts/Georgia.ttf",
-    "/usr/share/fonts/truetype/msttcorefonts/georgia.ttf",
-    "C:/Windows/Fonts/georgia.ttf",
+    ASSETS / "fonts" / "Roboto-Regular.ttf",
 ])
 TITLE = font_path("PROFILE_TITLE_FONT", [
-    "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
-    "/usr/share/fonts/truetype/msttcorefonts/Georgia_Bold.ttf",
-    "/usr/share/fonts/truetype/msttcorefonts/georgiab.ttf",
-    "C:/Windows/Fonts/georgiab.ttf",
+    ASSETS / "fonts" / "Roboto-Bold.ttf",
 ])
 fonts = {s: ImageFont.truetype(REGULAR, max(12, round(s * 0.85))) for s in [12, 14, 16, 18, 20]}
 title_font = ImageFont.truetype(TITLE, 66)
@@ -109,10 +103,10 @@ def badge(filename, label, contact=False):
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="32" viewBox="0 0 {width} 32" role="img" aria-label="{escape(label)}">
 <rect x=".5" y=".5" width="{width-1}" height="31" rx="6" fill="{fill}" stroke="#2e6141"/>
 <rect x="12" y="13" width="6" height="6" rx="1" fill="#59ff9a"/>
-<text x="27" y="21" fill="#c7f7d9" font-family="Georgia, serif" font-size="13">{escape(label)}</text>
+<text x="27" y="21" fill="#c7f7d9" font-family="Roboto, sans-serif" font-size="13">{escape(label)}</text>
 </svg>'''
     (ASSETS / f"{filename}.svg").write_text(svg + "\n")
-    # Bake Georgia into contact badges so they look the same on every device.
+    # Bake Roboto into contact badges so they look the same on every device.
     if contact:
         scale = 3
         im = Image.new("RGBA", (width*scale, 32*scale), (0, 0, 0, 0))
@@ -149,8 +143,8 @@ def main():
 <rect x="1" y="1" width="1278" height="138" rx="14" fill="#050c09" stroke="#245238" stroke-width="2"/>
 <path d="M40 70h200m800 0h200" stroke="#245238"/>
 <circle cx="240" cy="70" r="4" fill="#59ff9a"/><circle cx="1040" cy="70" r="4" fill="#59ff9a"/>
-<text x="640" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="25" fill="#59ff9a">$ let's_connect</text>
-<text x="640" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#8ba99a">AI / DATA SCIENCE / COMPUTER VISION</text>
+<text x="640" y="62" text-anchor="middle" font-family="Roboto, sans-serif" font-size="25" fill="#59ff9a">$ let's_connect</text>
+<text x="640" y="96" text-anchor="middle" font-family="Roboto, sans-serif" font-size="16" fill="#8ba99a">AI / DATA SCIENCE / COMPUTER VISION</text>
 </svg>
 ''')
     print(f"Generated {len(list(ASSETS.iterdir()))} assets in {ASSETS}")
