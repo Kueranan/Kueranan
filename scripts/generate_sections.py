@@ -12,11 +12,11 @@ from PIL import Image, ImageDraw, ImageFont
 from generate_assets import ASSETS, ROOT, REGULAR, TITLE, BG, GREEN, WHITE, MUTED
 
 W, N = 1000, 48
-BOLD = ImageFont.truetype(TITLE, 28)
+BOLD = ImageFont.truetype(TITLE, 24)
 SMALL = ImageFont.truetype(REGULAR, 12)
-LABEL = ImageFont.truetype(TITLE, 21)
-BADGE = ImageFont.truetype(TITLE, 18)
-BODY = ImageFont.truetype(REGULAR, 25)
+LABEL = ImageFont.truetype(TITLE, 18)
+BADGE = ImageFont.truetype(TITLE, 16)
+BODY = ImageFont.truetype(REGULAR, 21)
 
 SECTIONS = [
     ("01", "About Me", 168, [
@@ -121,7 +121,7 @@ def skill_badge(im, x, y, key, label):
     width = int(d.textlength(label, font=BADGE))+68
     d.rectangle((x, y, x+width, y+44), fill="#123a24", outline="#2b6c43")
     im.paste(ICONS[key], (x+10, y+7), ICONS[key])
-    d.text((x+49, y+12), label, font=BADGE, fill=WHITE)
+    d.text((x+49, y+22), label, font=BADGE, fill=WHITE, anchor="lm")
     return width
 
 
@@ -130,7 +130,7 @@ def render(index, section):
     im = background(index, number, height)
     d = ImageDraw.Draw(im)
     d.rounded_rectangle((30, 26, 77, 56), radius=5, fill="#123a24")
-    d.text((53, 41), number, font=ImageFont.truetype(REGULAR, 19), fill=GREEN, anchor="mm")
+    d.text((53, 41), number, font=ImageFont.truetype(REGULAR, 16), fill=GREEN, anchor="mm")
     d.text((94, 24), title, font=BOLD, fill=WHITE)
     d.text((966, 40), "NOTEBOOK / " + number, font=SMALL, fill=MUTED, anchor="rm")
     for line, y in zip(lines, [91, 127, 163]):
@@ -144,7 +144,7 @@ def render(index, section):
                 x += skill_badge(im, x, y+35, key, label)+10
             assert x < 820
             if caption:
-                d.text((32, y+91), caption, font=ImageFont.truetype(REGULAR, 23), fill="#a9c6b4")
+                d.text((32, y+91), caption, font=ImageFont.truetype(REGULAR, 20), fill="#a9c6b4")
     return im
 
 

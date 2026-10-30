@@ -33,9 +33,9 @@ TITLE = font_path("PROFILE_TITLE_FONT", [
     "/usr/share/fonts/truetype/msttcorefonts/georgiab.ttf",
     "C:/Windows/Fonts/georgiab.ttf",
 ])
-fonts = {s: ImageFont.truetype(REGULAR, s) for s in [12, 14, 16, 18, 20]}
-title_font = ImageFont.truetype(TITLE, 78)
-surname_font = ImageFont.truetype(TITLE, 41)
+fonts = {s: ImageFont.truetype(REGULAR, max(12, round(s * 0.85))) for s in [12, 14, 16, 18, 20]}
+title_font = ImageFont.truetype(TITLE, 66)
+surname_font = ImageFont.truetype(TITLE, 35)
 rng = random.Random(32)
 streams = [(x, rng.randrange(480), rng.randrange(3, 8),
             "".join(rng.choice("01:<>/{}") for _ in range(24)))
