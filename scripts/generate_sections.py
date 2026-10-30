@@ -26,7 +26,7 @@ SECTIONS = [
         "Computer Science @ Chulalongkorn University",
         "AI & Data Science internship candidate | B.Sc. 2024–present",
     ]),
-    ("02", "Tech Stack & Tools", 376, []),
+    ("02", "Tech Stack & Tools", 472, []),
     ("03", "Selected Work", 208, [
         "KBTG | 14th place in asset price prediction",
         "AIhack 2025 | Probability prediction & AUC optimization",
@@ -52,8 +52,10 @@ GROUPS = [
       ("scikitlearn", "SCIKIT-LEARN"), ("tensorflow", "TENSORFLOW")],
      "Feature engineering · Cross-validation · CNNs · RNNs/LSTMs"),
     ("Development & Tools", 232,
-     [("java", "JAVA"), ("git", "GIT"), ("github", "GITHUB")],
+     [("java", "JAVA"), ("git", "GIT"), ("github", "GITHUB"), ("openai", "CODEX")],
      "Object-oriented programming · Pygame · Version control"),
+    ("Analytics & Reporting", 368,
+     [("excel", "EXCEL"), ("powerbi", "POWER BI")], ""),
 ]
 
 
@@ -144,7 +146,8 @@ def render(index, section):
             for key, label in badges:
                 x += skill_badge(im, x, y+35, key, label)+10
             assert x < 820
-            d.text((32, y+91), caption, font=ImageFont.truetype(REGULAR, 23), fill="#a9c6b4")
+            if caption:
+                d.text((32, y+91), caption, font=ImageFont.truetype(REGULAR, 23), fill="#a9c6b4")
     return im
 
 
@@ -178,14 +181,18 @@ def readme():
     for number, title, _, lines in SECTIONS:
         text = f'{number} / {title}. ' + '. '.join(lines)
         if number == "02":
-            text += 'Python, PyTorch, scikit-learn, TensorFlow; Java, Git, GitHub. Feature engineering, cross-validation, CNNs, RNNs/LSTMs, OOP and Pygame.'
+            text += '; '.join(', '.join(label for _, label in badges) for _, _, badges, _ in GROUPS) + '. '
+            text += 'Feature engineering, cross-validation, CNNs, RNNs/LSTMs, OOP and Pygame.'
         parts.append(f'<p>\n  <img src="assets/section-{number}.gif" width="100%" alt="{escape(text, quote=True)}" />\n</p>\n')
     parts.extend(['<details>', '<summary>Read the plain-text profile</summary>', ''])
     for number, title, _, lines in SECTIONS:
         parts.extend([f'### {number} / {title}', ''])
         if number == "02":
             for group, _, badges, caption in GROUPS:
-                parts.extend([f'**{group}:** ' + ', '.join(label for _, label in badges) + '.', caption + '.', ''])
+                parts.append(f'**{group}:** ' + ', '.join(label for _, label in badges) + '.')
+                if caption:
+                    parts.append(caption + '.')
+                parts.append('')
         else:
             parts.extend([line + '.' for line in lines] + [''])
     parts.extend(['</details>', '', '<p align="center"><a href="mailto:guerguer000@gmail.com">Let’s connect</a> · From raw data to working intelligence.</p>', ''])

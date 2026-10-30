@@ -14,7 +14,7 @@
 </p>
 
 <p>
-  <img src="assets/section-02.gif" width="100%" alt="02 / Tech Stack &amp; Tools. Python, PyTorch, scikit-learn, TensorFlow; Java, Git, GitHub. Feature engineering, cross-validation, CNNs, RNNs/LSTMs, OOP and Pygame." />
+  <img src="assets/section-02.gif" width="100%" alt="02 / Tech Stack &amp; Tools. PYTHON, PYTORCH, SCIKIT-LEARN, TENSORFLOW; JAVA, GIT, GITHUB, CODEX; EXCEL, POWER BI. Feature engineering, cross-validation, CNNs, RNNs/LSTMs, OOP and Pygame." />
 </p>
 
 <p>
@@ -46,8 +46,10 @@ AI & Data Science internship candidate | B.Sc. 2024–present.
 **Machine Learning & Data Science:** PYTHON, PYTORCH, SCIKIT-LEARN, TENSORFLOW.
 Feature engineering · Cross-validation · CNNs · RNNs/LSTMs.
 
-**Development & Tools:** JAVA, GIT, GITHUB.
+**Development & Tools:** JAVA, GIT, GITHUB, CODEX.
 Object-oriented programming · Pygame · Version control.
+
+**Analytics & Reporting:** EXCEL, POWER BI.
 
 ### 03 / Selected Work
 
