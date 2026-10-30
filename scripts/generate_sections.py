@@ -3,22 +3,19 @@
 from html import escape
 from io import BytesIO
 import math
-from pathlib import Path
 import random
 import xml.etree.ElementTree as ET
 
 import cairosvg
 from PIL import Image, ImageDraw, ImageFont
 
-from generate_assets import ASSETS, ROOT, MONO, TITLE, BG, GREEN, WHITE, MUTED
+from generate_assets import ASSETS, ROOT, REGULAR, TITLE, BG, GREEN, WHITE, MUTED
 
 W, N = 1000, 48
 BOLD = ImageFont.truetype(TITLE, 28)
-SMALL = ImageFont.truetype(MONO, 12)
+SMALL = ImageFont.truetype(REGULAR, 12)
 LABEL = ImageFont.truetype(TITLE, 21)
 BADGE = ImageFont.truetype(TITLE, 18)
-REGULAR = TITLE.replace("Arial Bold.ttf", "Arial.ttf").replace("DejaVuSans-Bold.ttf", "DejaVuSans.ttf").replace("arialbd.ttf", "arial.ttf")
-REGULAR = REGULAR if Path(REGULAR).exists() else TITLE
 BODY = ImageFont.truetype(REGULAR, 25)
 
 SECTIONS = [
@@ -133,7 +130,7 @@ def render(index, section):
     im = background(index, number, height)
     d = ImageDraw.Draw(im)
     d.rounded_rectangle((30, 26, 77, 56), radius=5, fill="#123a24")
-    d.text((53, 41), number, font=ImageFont.truetype(MONO, 19), fill=GREEN, anchor="mm")
+    d.text((53, 41), number, font=ImageFont.truetype(REGULAR, 19), fill=GREEN, anchor="mm")
     d.text((94, 24), title, font=BOLD, fill=WHITE)
     d.text((966, 40), "NOTEBOOK / " + number, font=SMALL, fill=MUTED, anchor="rm")
     for line, y in zip(lines, [91, 127, 163]):
@@ -176,7 +173,7 @@ def readme():
              '<p align="center">\n  <img src="assets/terminal-header.gif" width="100%" alt="Kueranan Puangninnoi | AI, Data Science &amp; Computer Vision" />\n</p>',
              '<p align="center">']
     for name, url, label in contacts:
-        parts.append(f'  <a href="{url}"><img src="assets/{name}.svg" height="32" alt="{label}" /></a>')
+        parts.append(f'  <a href="{url}"><img src="assets/{name}.png" height="32" alt="{label}" /></a>')
     parts.append('</p>\n')
     for number, title, _, lines in SECTIONS:
         text = f'{number} / {title}. ' + '. '.join(lines)

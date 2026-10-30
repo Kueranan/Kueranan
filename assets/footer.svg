@@ -2,6 +2,6 @@
 <rect x="1" y="1" width="1278" height="138" rx="14" fill="#050c09" stroke="#245238" stroke-width="2"/>
 <path d="M40 70h200m800 0h200" stroke="#245238"/>
 <circle cx="240" cy="70" r="4" fill="#59ff9a"/><circle cx="1040" cy="70" r="4" fill="#59ff9a"/>
-<text x="640" y="62" text-anchor="middle" font-family="monospace" font-size="25" fill="#59ff9a">$ let's_connect</text>
-<text x="640" y="96" text-anchor="middle" font-family="monospace" font-size="16" fill="#8ba99a">AI / DATA SCIENCE / COMPUTER VISION</text>
+<text x="640" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="25" fill="#59ff9a">$ let's_connect</text>
+<text x="640" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#8ba99a">AI / DATA SCIENCE / COMPUTER VISION</text>
 </svg>

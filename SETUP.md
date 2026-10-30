@@ -22,13 +22,13 @@ Official documentation: [Managing your profile README](https://docs.github.com/e
 - A collapsed plain-text profile and descriptive image alternatives keep the content available without loading the artwork.
 - The name and identity remain visible throughout the loop.
 - Every GIF has a matching PNG. Replace `.gif` with `.png` in the README image paths to disable motion.
-- Badges and footer are local SVG images with no scripts, external fonts, or network requests.
+- All artwork uses Georgia, with Georgia Bold for headings and skill labels. Contact badges are rendered as PNGs to preserve the font on devices without Georgia. SVG alternatives remain available locally.
 - GitHub controls the surrounding page theme. Images retain their black background in light and dark modes; README text uses the visitor's GitHub theme.
 - Work, education, and skills are based on the supplied resume, with Codex, Excel, and Power BI added at the owner's request. Project repository links were not supplied, so none were invented. A phone number and a copy of the resume PDF are not included.
 
 ## Regenerate the artwork
 
-Python 3, Pillow, CairoSVG, and the system Cairo library are required. The generator supports macOS, Linux, and Windows font locations. For another font installation, set `PROFILE_MONO_FONT` and `PROFILE_TITLE_FONT` to font file paths.
+Python 3, Pillow, CairoSVG, the system Cairo library, and locally installed Georgia regular/bold fonts are required. The generator checks macOS, Linux, and Windows font locations. For another font installation, set `PROFILE_BODY_FONT` and `PROFILE_TITLE_FONT` to font file paths. Font files are not distributed with this repository.
 
 ```sh
 python3 -m venv .venv

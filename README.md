@@ -3,10 +3,10 @@
   <img src="assets/terminal-header.gif" width="100%" alt="Kueranan Puangninnoi | AI, Data Science &amp; Computer Vision" />
 </p>
 <p align="center">
-  <a href="https://github.com/Kueranan"><img src="assets/github.svg" height="32" alt="GitHub: Kueranan" /></a>
-  <a href="https://www.kaggle.com/kueranan"><img src="assets/kaggle.svg" height="32" alt="Kaggle: kueranan" /></a>
-  <a href="https://www.linkedin.com/in/kueranan-puangninnoi-71858b2a5"><img src="assets/linkedin.svg" height="32" alt="LinkedIn: Kueranan Puangninnoi" /></a>
-  <a href="mailto:guerguer000@gmail.com"><img src="assets/email.svg" height="32" alt="Email: guerguer000@gmail.com" /></a>
+  <a href="https://github.com/Kueranan"><img src="assets/github.png" height="32" alt="GitHub: Kueranan" /></a>
+  <a href="https://www.kaggle.com/kueranan"><img src="assets/kaggle.png" height="32" alt="Kaggle: kueranan" /></a>
+  <a href="https://www.linkedin.com/in/kueranan-puangninnoi-71858b2a5"><img src="assets/linkedin.png" height="32" alt="LinkedIn: Kueranan Puangninnoi" /></a>
+  <a href="mailto:guerguer000@gmail.com"><img src="assets/email.png" height="32" alt="Email: guerguer000@gmail.com" /></a>
 </p>
 
 <p>

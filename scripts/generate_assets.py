@@ -21,17 +21,19 @@ def font_path(env, candidates):
     raise RuntimeError(f"No suitable font found. Set {env} to a font file path.")
 
 
-MONO = font_path("PROFILE_MONO_FONT", [
-    "/System/Library/Fonts/Supplemental/Andale Mono.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf",
-    "C:/Windows/Fonts/consola.ttf",
+REGULAR = font_path("PROFILE_BODY_FONT", [
+    "/System/Library/Fonts/Supplemental/Georgia.ttf",
+    "/usr/share/fonts/truetype/msttcorefonts/Georgia.ttf",
+    "/usr/share/fonts/truetype/msttcorefonts/georgia.ttf",
+    "C:/Windows/Fonts/georgia.ttf",
 ])
 TITLE = font_path("PROFILE_TITLE_FONT", [
-    "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
-    "C:/Windows/Fonts/arialbd.ttf",
+    "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+    "/usr/share/fonts/truetype/msttcorefonts/Georgia_Bold.ttf",
+    "/usr/share/fonts/truetype/msttcorefonts/georgiab.ttf",
+    "C:/Windows/Fonts/georgiab.ttf",
 ])
-fonts = {s: ImageFont.truetype(MONO, s) for s in [12, 14, 16, 18, 20]}
+fonts = {s: ImageFont.truetype(REGULAR, s) for s in [12, 14, 16, 18, 20]}
 title_font = ImageFont.truetype(TITLE, 78)
 surname_font = ImageFont.truetype(TITLE, 41)
 rng = random.Random(32)
@@ -101,14 +103,26 @@ def frame(index):
 
 
 def badge(filename, label, contact=False):
-    width = len(label)*8+45
+    label_font = ImageFont.truetype(REGULAR, 13)
+    width = math.ceil(label_font.getlength(label))+42
     fill = "#102b1b" if contact else "#09150e"
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="32" viewBox="0 0 {width} 32" role="img" aria-label="{escape(label)}">
 <rect x=".5" y=".5" width="{width-1}" height="31" rx="6" fill="{fill}" stroke="#2e6141"/>
 <rect x="12" y="13" width="6" height="6" rx="1" fill="#59ff9a"/>
-<text x="27" y="21" fill="#c7f7d9" font-family="monospace" font-size="13">{escape(label)}</text>
+<text x="27" y="21" fill="#c7f7d9" font-family="Georgia, serif" font-size="13">{escape(label)}</text>
 </svg>'''
     (ASSETS / f"{filename}.svg").write_text(svg + "\n")
+    # Bake Georgia into contact badges so they look the same on every device.
+    if contact:
+        scale = 3
+        im = Image.new("RGBA", (width*scale, 32*scale), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        d.rounded_rectangle((1, 1, width*scale-2, 32*scale-2), radius=6*scale,
+                            fill=fill, outline="#2e6141", width=scale)
+        d.rounded_rectangle((12*scale, 13*scale, 18*scale, 19*scale), radius=scale, fill=GREEN)
+        d.text((27*scale, 21*scale), label, anchor="ls",
+               font=ImageFont.truetype(REGULAR, 13*scale), fill="#c7f7d9")
+        im.save(ASSETS / f"{filename}.png", optimize=True)
 
 
 def main():
@@ -135,8 +149,8 @@ def main():
 <rect x="1" y="1" width="1278" height="138" rx="14" fill="#050c09" stroke="#245238" stroke-width="2"/>
 <path d="M40 70h200m800 0h200" stroke="#245238"/>
 <circle cx="240" cy="70" r="4" fill="#59ff9a"/><circle cx="1040" cy="70" r="4" fill="#59ff9a"/>
-<text x="640" y="62" text-anchor="middle" font-family="monospace" font-size="25" fill="#59ff9a">$ let's_connect</text>
-<text x="640" y="96" text-anchor="middle" font-family="monospace" font-size="16" fill="#8ba99a">AI / DATA SCIENCE / COMPUTER VISION</text>
+<text x="640" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="25" fill="#59ff9a">$ let's_connect</text>
+<text x="640" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#8ba99a">AI / DATA SCIENCE / COMPUTER VISION</text>
 </svg>
 ''')
     print(f"Generated {len(list(ASSETS.iterdir()))} assets in {ASSETS}")
